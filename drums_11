@@ -1,0 +1,41 @@
+use_bpm 11
+
+live_loop :drums2 do
+  s = 0.5
+  
+  it = [2,4].choose
+  
+  it.times do
+    sample :bd_ada
+    sample :bd_boom
+    sleep 2.0/it*s/11
+  end
+  
+  4.times do
+    sample :sn_zome, rate: [8].choose
+    sleep s/11
+  end
+  
+  
+  it2 = [3,6].choose
+  
+  it2.times do
+    sample :bd_ada
+    sample :bd_boom
+    sleep 3.0/it2*s/11
+  end
+  
+  2.times do
+    sample :sn_zome, rate: [8].choose
+    sleep s/11
+    
+  end
+end
+
+live_loop :hats do
+  
+  sample :elec_blip, rate: [2,4].choose*[-1,1].choose, pan: rrand(-1,1), amp: [0.5,1].choose
+  sample :elec_blip, rate: [2,4].choose*[-1,1].choose, pan: rrand(-1,1), amp: [0.5,1].choose
+  sleep 0.25/11
+  
+end
